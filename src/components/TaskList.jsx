@@ -4,19 +4,19 @@ import './TaskList.css'; // We'll create this CSS file next
 const tasksInitial = [
   {
     id: 'followDavinci',
-    text: 'Follow Davinci on X',
+    text: <>Follow Davinci on <img src="/Xlogo.png" alt="X logo" className="x-logo" /></>,
     link: 'https://x.com/davincij15',
     completed: false,
   },
   {
     id: 'followMagicCraft',
-    text: 'Follow MagicCraft on X',
+    text: <>Follow MagicCraft on <img src="/Xlogo.png" alt="X logo" className="x-logo" /></>,
     link: 'https://x.com/magiccraftgame',
     completed: false,
   },
   {
     id: 'likePost',
-    text: 'Like this post on X',
+    text: <>Like this post on <img src="/Xlogo.png" alt="X logo" className="x-logo" /></>,
     link: 'https://x.com/MagicCraftGame/status/1909259879816090004',
     completed: false,
   },
@@ -84,7 +84,7 @@ function TaskList({ onTasksComplete }) {
             {task.completed ? (
               <span className="status-label completed-label">Completed</span>
             ) : (
-              <button onClick={() => handleTaskClick(task.id)}>Do Task</button>
+              <button onClick={() => handleTaskClick(task.id)}>Go</button>
             )}
           </li>
         ))}

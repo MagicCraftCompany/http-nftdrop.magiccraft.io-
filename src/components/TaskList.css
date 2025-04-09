@@ -21,6 +21,15 @@
 .task-list li span {
   flex-grow: 1;
   margin-right: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.x-logo {
+  height: 1em;
+  width: auto;
+  margin-left: 0.25em;
+  vertical-align: middle;
 }
 
 .task-list button {
