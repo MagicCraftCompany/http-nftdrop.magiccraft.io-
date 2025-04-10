@@ -1,2 +1,24 @@
-[context.deploy-preview] 
-   environment = {   REACT_APP_CHAIN_ID="56", REACT_APP_NODE_1= "https://bsc-dataseed1.binance.org/", REACT_APP_NODE_2="https://bsc-dataseed2.binance.org/", REACT_APP_NODE_3="https://bsc-dataseed3.binance.org/", REACT_APP_NFT_BACK_URL="https://magiccraft-mint.herokuapp.com/whitelist", REACT_APP_GENESIS_CONTRACT_ADDRESS="0xBF4D4886554a5FDEFFf07aeA90EC37d24260E7A7", REACT_APP_MARKETPLACE_BACK_URL="https://api.magiccraft.io", REACT_APP_BETA_URL="https://api-beta-magiccraft.herokuapp.com", REACT_APP_HACKLESS_KEY="710077b1f1f7f8c497724e39e5f17ade3ecd031a75ae0b06eead9d4fc772c435"}
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[context.production]
+  environment = { 
+    NODE_VERSION = "18"
+  }
+
+[context.deploy-preview]
+  environment = { 
+    NODE_VERSION = "18"
+  }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Improve performance for thirdweb assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
