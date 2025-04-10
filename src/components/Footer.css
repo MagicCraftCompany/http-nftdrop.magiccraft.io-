@@ -1,0 +1,154 @@
+/* Remove SASS @import url(...); Font imports should be handled globally in index.css or via index.html */
+
+/* Remove html {} and @supports {} blocks - handled globally */
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* position: absolute; */
+  /* bottom: 0; */
+  padding: 1rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer img { /* Specificity for img inside .footer */
+  height: 16px;
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 200px;
+}
+
+.footer__social--socialIcon {
+  color: #76779a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Add this for the 'a' tag */
+}
+
+.footer__social--socialIcon h4 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.footer__social--socialIcon:hover {
+  color: white;
+}
+
+
+.footer__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.footer__text__links {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer__text__links a {
+  margin-right: 2rem;
+  color: #76779a;
+  font-size: 0.9rem;
+  text-decoration: none; /* Add this */
+}
+
+.footer__text__links a:last-child {
+  margin-right: 0;
+}
+
+.footer__text__links a:hover {
+  color: white;
+}
+
+.footer__text img {
+  margin-bottom: 10px;
+  width: 148px;
+}
+
+.footer__text h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: white;
+  opacity: 0.3;
+  margin-bottom: 0.25rem;
+}
+
+.footer__text-second {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: white;
+  opacity: 0.3;
+}
+
+/* Media Queries (converted from nested syntax) */
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 2rem 1rem;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer__social {
+    width: unset;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    max-width: 250px;
+  }
+
+  .footer__social--socialIcon {
+     margin: 0 15px;
+  }
+
+  /* Added rule for spacing between icons on larger screens that was previously nested */
+  /* This rule actually applies *outside* the max-width: 576px query */
+  /* It's better placed outside this media query block */
+
+
+  .footer__text {
+    align-items: center;
+    text-align: center;
+  }
+
+   .footer__text img {
+      margin-top: 20px;
+   }
+
+  .footer__text__links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__text__links a {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Spacing rule for social icons on larger screens */
+@media (min-width: 577px) {
+   .footer__social--socialIcon {
+      margin: 0 10px;
+   }
+} 

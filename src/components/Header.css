@@ -1,0 +1,133 @@
+/* Basic Header Styles - Adapted from Header.scss */
+.app-header {
+  background-color: #06071b; /* bg-header color */
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  border-bottom: 1px solid #2c2d5a; /* Example border */
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  max-width: 1400px; /* Adjust as needed */
+  margin: 0 auto;
+  padding: 0 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Logo */
+.header-logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 30px;
+  width: auto;
+}
+
+.logo-small {
+  display: none; /* Hidden by default */
+}
+
+/* Basic Nav */
+.header-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Allow nav items to wrap */
+  gap: 5px; /* Spacing between nav items */
+  margin: 0 15px; /* Spacing around nav */
+}
+
+.header-menu-item {
+  padding: 8px 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  color: #76779a; /* Default icon/text color */
+}
+
+.navbar-item svg {
+  margin-right: 6px;
+  font-size: 1.2em; /* Adjust icon size */
+}
+
+.navbar-item h6 {
+  font-family: 'Inter', sans-serif; /* Match font if possible */
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.header-menu-item:hover .navbar-item,
+.header-menu-item.active .navbar-item {
+  color: white; /* Hover/active color */
+}
+
+/* Wallet Button Area */
+.header-connect-wallet {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Push the wallet button to the far right */
+}
+
+/* Basic Responsive adjustments */
+@media only screen and (max-width: 1200px) {
+  .navbar-item svg {
+     /* Optionally hide icons on smaller screens */
+     /* display: none; */
+  }
+   .header-nav {
+      /* Adjust nav spacing/layout if needed */
+   }
+}
+
+@media only screen and (max-width: 768px) {
+  .header-container {
+    padding: 0 10px;
+  }
+  .header-logo {
+     margin-bottom: 10px; /* Space below logo when stacked */
+  }
+  .header-nav {
+     width: auto; /* Allow nav to size naturally */
+     justify-content: flex-start; /* Align items to start */
+     margin: 0 10px 10px 10px; /* Adjust margin */
+     order: 2; /* Place nav after logo */
+  }
+   .header-connect-wallet {
+     margin-left: auto; /* Keep trying to push right */
+     margin-bottom: 10px; /* Space below button */
+     order: 3; /* Place button last */
+   }
+}
+
+
+@media only screen and (max-width: 576px) {
+  .logo-large {
+    display: none; /* Hide text logo */
+  }
+  .logo-small {
+    display: block; /* Show icon logo */
+    height: 40px; /* Adjust size if needed */
+  }
+   .header-logo {
+     height: auto; /* Adjust height */
+   }
+  .navbar-item h6 {
+     font-size: 12px; /* Smaller text on mobile */
+  }
+   .header-menu-item {
+     padding: 6px 8px;
+   }
+} 

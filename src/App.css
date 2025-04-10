@@ -1,24 +1,151 @@
 .App {
-  max-width: 600px;
-  margin: 40px auto;
+  margin: 0 auto 40px auto; /* Center App content */
   padding: 20px;
   font-family: sans-serif;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  border-radius: 8px;
   text-align: center;
+  flex-grow: 1;
+  max-width: 1100px; /* Limit overall width */
+}
+
+/* Style for the new banner section */
+.description-banner {
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically on small screens */
+  align-items: center;
+  text-align: center;
+  background-color: #1c1d33; /* Match task list item background */
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 40px; /* Space below banner */
+  border: 1px solid #2c2d5a; /* Match task list border */
+}
+
+/* Adjust layout for wider screens */
+@media (min-width: 768px) {
+  .description-banner {
+    flex-direction: row; /* Image beside text */
+    text-align: left;
+    align-items: flex-start; /* Align items to top */
+  }
+  .nft-image {
+     margin-right: 30px; /* Space between image and text */
+     margin-bottom: 0; /* Remove bottom margin when side-by-side */
+     flex-shrink: 0; /* Prevent image from shrinking too much */
+  }
+  .banner-text {
+     flex-grow: 1; /* Allow text to take remaining space */
+  }
 }
 
 .nft-image {
-  max-width: 80%;
+  max-width: 250px; /* Slightly smaller image */
+  width: 60%;
   height: auto;
+  margin-bottom: 20px; /* Space below image on mobile */
+  border-radius: 10px;
+}
+
+.banner-text h2 {
+  color: #ffffff;
+  margin-top: 0; /* Remove top margin if side-by-side */
+  margin-bottom: 15px;
+  font-size: 1.8em;
+}
+
+/* Add style for the Base color span */
+.base-color {
+  /* color: #0052FF; */ /* Remove or comment out the old solid color */
+  background: linear-gradient(to right, #0052FF, #0091FF); /* Base-like gradient */
+  -webkit-background-clip: text; /* Vendor prefix for broader compatibility */
+  background-clip: text;
+  color: transparent; /* Make the text color transparent to show the background gradient */
+}
+
+.banner-text p {
+  color: #d0d0d0;
+  line-height: 1.6;
   margin-bottom: 20px;
-  border-radius: 5px;
+}
+
+/* Optional list styling */
+.description-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: #b0b0b0;
+}
+.description-list li {
+  margin-bottom: 8px;
+}
+
+/* Wrapper for info containers (Available, Utility) */
+.info-container-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Stack vertically by default */
+  gap: 10px; /* Space between containers */
+}
+
+/* General Styling for Info Containers (Available, Utility) */
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center on mobile */
+  background-color: rgba(0, 0, 0, 0.2); /* Slightly darker background */
+  padding: 10px 15px;
+  border-radius: 8px;
+  /* margin-top: 15px; */ /* Replaced by gap in wrapper */
+}
+
+/* Specific container names */
+.available-container {}
+.utility-container {}
+
+@media (min-width: 768px) {
+   .info-container-wrapper {
+     flex-direction: row; /* Place side-by-side on larger screens */
+     justify-content: flex-start;
+   }
+   .info-container {
+      justify-content: flex-start; /* Align left on desktop */
+      display: inline-flex; /* Make it fit content width */
+      margin-top: 0; /* Remove top margin when using gap */
+   }
+}
+
+.info-container h5 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.3; /* Adjust line height if text wraps */
+}
+
+/* Label part (e.g., "Available:", "Utility:") */
+.info-container h5:first-child {
+  display: flex;
+  align-items: center;
+  color: #a0a0c0; /* Different color for label */
+  margin-right: 8px;
+  white-space: nowrap; /* Prevent label from wrapping */
+}
+
+/* Value part (e.g., "1000+ Claimable", "Unlocks...") */
+.info-container h5:last-child {
+   /* Optional: Allow text wrapping if needed */
+   /* white-space: normal; */
+}
+
+.info-container .icon {
+  margin-right: 6px;
+  font-size: 1.2em;
+  color: #a0a0c0; /* Match label color */
 }
 
 h1 {
-  color: #333;
-  margin-bottom: 25px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 5em;
 }
 
 .warning {
@@ -30,55 +157,3 @@ h1 {
   border: 1px solid #f5c6cb;
   border-radius: 5px;
 }
-
-/* Styles for the Thirdweb ConnectButton */
-.connect-button-container {
-  margin-bottom: 25px; /* Add some space below the button */
-}
-
-/* You can keep or remove the default Vite styles below */
-/* Default Vite styles (optional cleanup) */
-/*
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-*/
