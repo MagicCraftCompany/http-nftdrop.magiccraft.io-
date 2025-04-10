@@ -36,13 +36,6 @@
   background-color: #252742; /* Slightly lighter background on hover */
 }
 
-/* Completed Task Items */
-.task-list li.completed {
-  /* Keep background same, rely on label change */
-  /* Or add a subtle change if desired, e.g., */
-  /* border-left: 4px solid #4caf50; */
-}
-
 /* Task Text Area */
 .task-list li span:first-child { /* Target the span holding the text */
   flex-grow: 1;

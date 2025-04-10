@@ -98,8 +98,8 @@
 }
 
 /* Specific container names */
-.available-container {}
-.utility-container {}
+/* Removed empty .available-container {} */
+/* Removed empty .utility-container {} */
 
 @media (min-width: 768px) {
    .info-container-wrapper {
@@ -131,10 +131,7 @@
 }
 
 /* Value part (e.g., "1000+ Claimable", "Unlocks...") */
-.info-container h5:last-child {
-   /* Optional: Allow text wrapping if needed */
-   /* white-space: normal; */
-}
+/* Removed empty .info-container h5:last-child {} */
 
 .info-container .icon {
   margin-right: 6px;

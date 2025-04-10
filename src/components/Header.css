@@ -83,13 +83,9 @@
 
 /* Basic Responsive adjustments */
 @media only screen and (max-width: 1200px) {
-  .navbar-item svg {
-     /* Optionally hide icons on smaller screens */
-     /* display: none; */
-  }
-   .header-nav {
-      /* Adjust nav spacing/layout if needed */
-   }
+  /* Removed empty .navbar-item svg {} */
+
+   /* Removed empty .header-nav {} */
 }
 
 @media only screen and (max-width: 768px) {

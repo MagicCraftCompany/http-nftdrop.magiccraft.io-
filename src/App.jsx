@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import { useActiveAccount, useActiveWalletChain, ConnectButton } from 'thirdweb/react'
 import { createThirdwebClient } from 'thirdweb'
 import { base } from 'thirdweb/chains'
+import { createWallet, walletConnect } from "thirdweb/wallets";
 import { GiBlackKnightHelm } from 'react-icons/gi'; // Import the icon
 import { AiFillStar } from 'react-icons/ai'; // Import Star icon for Utility
 import './components/ClaimButton.css';
@@ -16,6 +17,12 @@ const CONTRACT_ADDRESS = '0x689ca50d702801eE119f3156e0cf90490d74b1Aa';
 
 const clientId = import.meta.env.VITE_THIRDWEB_CLIENT_ID;
 const client = createThirdwebClient({ clientId });
+
+const supportedWallets = [
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  walletConnect(),
+];
 
 function App() {
   const account = useActiveAccount();
@@ -41,6 +48,7 @@ function App() {
         <ConnectButton
           client={client}
           chain={base}
+          wallets={supportedWallets}
           appMetadata={{
             name: "MagicCraft Claim",
             url: window.location.origin,
@@ -103,6 +111,7 @@ function App() {
             <ConnectButton
               client={client}
               chain={base}
+              wallets={supportedWallets}
               appMetadata={{
                 name: "MagicCraft Claim",
                 url: window.location.origin,
