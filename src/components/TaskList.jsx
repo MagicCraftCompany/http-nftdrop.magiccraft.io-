@@ -17,7 +17,7 @@ const tasksInitial = [
   {
     id: 'likePost',
     text: <>Like this post on <img src="/Xlogo.png" alt="X logo" className="x-logo" /></>,
-    link: 'https://x.com/MagicCraftGame/status/1909259879816090004',
+    link: 'https://x.com/MagicCraftGame/status/1909958379428249689?t=lHq12CNVvAOAmvPC2zoV3A&s=19',
     completed: false,
   },
 ];
