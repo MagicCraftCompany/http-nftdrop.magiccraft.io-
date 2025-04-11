@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import { useActiveAccount, useActiveWalletChain, ConnectButton } from 'thirdweb/react'
 import { createThirdwebClient } from 'thirdweb'
-import { base } from 'thirdweb/chains'
+import { defineChain } from 'thirdweb/chains'
 import { createWallet, walletConnect } from "thirdweb/wallets";
 import { GiBlackKnightHelm } from 'react-icons/gi'; // Import the icon
 import { AiFillStar } from 'react-icons/ai'; // Import Star icon for Utility
@@ -16,7 +16,25 @@ const NFT_IMAGE_URL = '/nft.webp'; // Path to image in public folder
 const CONTRACT_ADDRESS = '0x689ca50d702801eE119f3156e0cf90490d74b1Aa';
 
 const clientId = import.meta.env.VITE_THIRDWEB_CLIENT_ID;
+// If client ID is missing, show error or fallback
+if (!clientId) {
+  console.error("Missing VITE_THIRDWEB_CLIENT_ID in .env file");
+  // You could render an error message here or provide a default behavior
+}
 const client = createThirdwebClient({ clientId });
+
+// Use defineChain with explicit 'default' keys for RPC and explorer
+const baseChain = defineChain({
+  id: 8453,
+  name: "Base",
+  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+  rpcUrls: {
+    default: { http: ["https://mainnet.base.org"] } // Specify default RPC endpoint
+  },
+  blockExplorers: {
+    default: { name: "Basescan", url: "https://basescan.org" } // Specify default block explorer
+  }
+});
 
 const supportedWallets = [
   createWallet("io.metamask"),
@@ -29,7 +47,8 @@ function App() {
   const activeChain = useActiveWalletChain();
 
   const isConnected = !!account;
-  const isCorrectChain = activeChain?.id === base.id;
+  // Update chain ID check to use our custom baseChain object
+  const isCorrectChain = activeChain?.id === baseChain.id;
 
   const [tasksCompleted, setTasksCompleted] = useState(false);
 
@@ -47,7 +66,8 @@ function App() {
       <Header>
         <ConnectButton
           client={client}
-          chain={base}
+          // Use our custom baseChain object
+          chain={baseChain}
           wallets={supportedWallets}
           appMetadata={{
             name: "MagicCraft Claim",
@@ -110,7 +130,8 @@ function App() {
           <div className="claim-section"> {/* Use same wrapper class for spacing */}
             <ConnectButton
               client={client}
-              chain={base}
+              // Use our custom baseChain object
+              chain={baseChain}
               wallets={supportedWallets}
               appMetadata={{
                 name: "MagicCraft Claim",
