@@ -66,9 +66,9 @@ function ClaimButton({ contractAddress, isDisabled }) {
       setClaimMessage('Sending transaction... Please confirm in your wallet.');
       setTxHash('');
     } else if (isSuccess && transactionResult) {
-      setClaimMessage('NFT Claimed Successfully!');
+      setClaimMessage('Transaction submitted. Check confirmation in the explorer.');
       setTxHash(transactionResult.transactionHash);
-      console.log("Transaction successful:", transactionResult);
+      console.log("Transaction submitted:", transactionResult);
     } else if (isError) {
       console.error('Claim failed:', error);
       let message = 'Claim failed. ';
